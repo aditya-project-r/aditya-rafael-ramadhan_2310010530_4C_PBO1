@@ -4,7 +4,7 @@ Proyek ini adalah contoh sederhana aplikasi pengolahan data mahasiswa menggunaka
 
 ## Deskripsi
 
-Aplikasi ini menerima input berupa nama dan NPM mahasiswa, dan memberikan output berupa informasi detail dari NPM tersebut seperti tahun masuk, fakultas, program studi, dan nomor registrasi.
+Aplikasi ini menerima input berupa nama dan nilai, dan memberikan output berupa informasi detail dari nilai tersebut seperti nilai huruf, dan hasil kelulusan.
 
 Aplikasi ini mengimplementasikan beberapa konsep penting dalam pemrograman berorientasi objek (OOP) seperti Class, Object, Atribut, Method Constructor, Method Mutator, Method Accessor, Encapsulation, Inheritance, Overloading, Overriding, Seleksi, Perulangan, IO Sederhana, Array, dan Error Handling.
 
@@ -12,148 +12,155 @@ Aplikasi ini mengimplementasikan beberapa konsep penting dalam pemrograman beror
 
 Berikut adalah bagian kode yang relevan dengan konsep OOP yang dijelaskan:
 
-1. **Class** adalah template atau blueprint dari object. Pada kode ini, `Mahasiswa`, `MahasiswaDetail`, dan `MahasiswaBeraksi` adalah contoh dari class.
+1. **Class** adalah template atau blueprint dari object. Pada kode ini, `Nilai`, `NilaiDetail`, dan `NilaiBeraksi` adalah contoh dari class.
 
 ```bash
-public class Mahasiswa {
+public class Nilai {
     ...
 }
 
-public class MahasiswaDetail extends Mahasiswa {
+public class NilaiDetail extends Nilai {
     ...
 }
 
-public class MahasiswaBeraksi {
+public class NilaiBeraksi {
     ...
 }
 ```
 
-2. **Object** adalah instance dari class. Pada kode ini, `mhs[i] = new MahasiswaDetail(nama, npm);` adalah contoh pembuatan object.
+2. **Object** adalah instance dari class. Pada kode ini, `Aditya[0] = new NilaiDetail(nama, nilai);` adalah contoh pembuatan object.
 
 ```bash
-mhs[i] = new MahasiswaDetail(nama, npm);
+Aditya[0] = new NilaiDetail(nama, nilai);
 ```
 
-3. **Atribut** adalah variabel yang ada dalam class. Pada kode ini, `nama` dan `npm` adalah contoh atribut.
+3. **Atribut** adalah variabel yang ada dalam class. Pada kode ini, `nama` dan `nilai` adalah contoh atribut.
 
 ```bash
 String nama;
-String npm;
+double nilai;
 ```
 
-4. **Constructor** adalah method yang pertama kali dijalankan pada saat pembuatan object. Pada kode ini, constructor ada di dalam class `Mahasiswa` dan `MahasiswaDetail`.
+4. **Constructor** adalah method yang pertama kali dijalankan pada saat pembuatan object. Pada kode ini, constructor ada di dalam class `Nilai` dan `NilaiDetail`.
 
 ```bash
-public Mahasiswa(String nama, String npm) {
+public Nilai(String nama, double nilai) {
     this.nama = nama;
-    this.npm = npm;
+    this.nilai = nilai;
 }
 
-public MahasiswaDetail(String nama, String npm) {
-    super(nama, npm);
+public NilaiDetail(String nama, double nilai) {
+    super(nama, nilai);
 }
 ```
 
-5. **Mutator** atau setter digunakan untuk mengubah nilai dari suatu atribut. Pada kode ini, `setNama` dan `setNpm` adalah contoh method mutator.
+5. **Mutator** atau setter digunakan untuk mengubah nilai dari suatu atribut. Pada kode ini, `setNama` dan `setnilai` adalah contoh method mutator.
 
 ```bash
 public void setNama(String nama) {
     this.nama = nama;
 }
 
-public void setNpm(String npm) {
-    this.npm = npm;
+public void setnilai(double nilai) {
+    this.nilai = nilai;
 }
 ```
 
-6. **Accessor** atau getter digunakan untuk mengambil nilai dari suatu atribut. Pada kode ini, `getNama`, `getNpm`, `getTahunMasuk`, `getFakultas`, `getProdi`, dan `getNoRegistrasi` adalah contoh method accessor.
+6. **Accessor** atau getter digunakan untuk mengambil nilai dari suatu atribut. Pada kode ini, `getNama`, `getnilai`, `getNilaiHuruf`, dan `getKelulusan` adalah contoh method accessor.
 
 ```bash
 public String getNama() {
     return nama;
 }
 
-public String getNpm() {
-    return npm;
+public String getnilai() {
+    return nilai;
 }
 ```
 
-7. **Encapsulation** adalah konsep menyembunyikan data dengan membuat atribut menjadi private dan hanya bisa diakses melalui method. Pada kode ini, atribut `nama` dan `npm` dienkapsulasi dan hanya bisa diakses melalui method getter dan setter.
+7. **Encapsulation** adalah konsep menyembunyikan data dengan membuat atribut menjadi private dan hanya bisa diakses melalui method. Pada kode ini, atribut `nama` dan `nilai` dienkapsulasi dan hanya bisa diakses melalui method getter dan setter.
 
 ```bash
 private String nama;
-private String npm;
+private double nilai;
 ```
 
-8. **Inheritance** adalah konsep di mana sebuah class bisa mewarisi property dan method dari class lain. Pada kode ini, `MahasiswaDetail` mewarisi `Mahasiswa` dengan sintaks `extends`.
+8. **Inheritance** adalah konsep di mana sebuah class bisa mewarisi property dan method dari class lain. Pada kode ini, `NilaiDetal` mewarisi `Nilai` dengan sintaks `extends`.
 
 ```bash
-public class MahasiswaDetail extends Mahasiswa {
+public class NilaiDetail extends Nilai {
     ...
 }
 ```
 
-9. **Polymorphism** adalah konsep di mana sebuah nama dapat digunakan untuk merujuk ke beberapa tipe atau bentuk objek berbeda. Ini memungkinkan metode-metode dengan nama yang sama untuk berperilaku berbeda tergantung pada tipe objek yang mereka manipulasi, polymorphism bisa berbentuk Overloading ataupun Overriding. Pada kode ini, method `displayInfo(String)` di `Mahasiswa` merupakan overloading method `displayInfo` dan `displayInfo` di `MahasiswaDetail` merupakan override dari method `displayInfo` di `Mahasiswa`.
+9. **Polymorphism** adalah konsep di mana sebuah nama dapat digunakan untuk merujuk ke beberapa tipe atau bentuk objek berbeda. Ini memungkinkan metode-metode dengan nama yang sama untuk berperilaku berbeda tergantung pada tipe objek yang mereka manipulasi, polymorphism bisa berbentuk Overloading ataupun Overriding. Pada kode ini, method `displayInfo(String)` di `Nilai` merupakan overloading method `displayInfo`.
 
 ```bash
-public String displayInfo(String kelas) {
-    return displayInfo() + "\nKelas: " + kelas;
-}
-
-@Override
-public String displayInfo() {
-    ...
+public String displayInfo(){
+    return "Nama : "+getNama()+
+            "\nNilai : "+getNilai();
 }
 ```
 
-10. **Seleksi** adalah statement kontrol yang digunakan untuk membuat keputusan berdasarkan kondisi. Pada kode ini, digunakan seleksi `if else` dalam method `getFakultas` dan seleksi `switch` dalam method `getProdi`.
+10. **Seleksi** adalah statement kontrol yang digunakan untuk membuat keputusan berdasarkan kondisi. Pada kode ini, digunakan seleksi `if else` dalam method `getNilaiHuruf` dan seleksi `switch` dalam method `getKelulusan`.
 
 ```bash
-public String getFakultas() {
-    if(getNpm().substring(2, 4).equals("10")){
-        return "Teknologi Informasi";
+public String getNilaiHuruf() {
+    if (getNilai()>= 90) {
+        return "A";
+    } else if (getNilai() >= 80) {
+        return "B";
+    } else if (getNilai() >= 70) {
+        return "C";
+    } else if (getNilai() >= 60) {
+        return "D";
     } else {
-        return "Fakultas lain";
+        return "E";
     }
-
-    //return getNpm().substring(2, 4).equals("10") ? "Teknologi Informasi" : "Fakultas lain";
 }
-
-public String getProdi() {
-    switch(getNpm().substring(4, 6)) {
-        case "01":
-            return "Teknik Informatika";
-        case "02":
-            return "Sistem Informasi";
-        default:
-            return "Prodi lain";
-    }
+    
+public String getKelulusan(){
+    String Kelulusan = getNilaiHuruf();
+        
+    return switch (Kelulusan) {
+        case "A", "B", "C" -> "Lulus";
+        case "D", "E" -> "Tidak Lulus";
+        default -> "Nilai Tidak Valid";
+    };
 }
 ```
 
-11. **Perulangan** adalah statement kontrol yang digunakan untuk menjalankan blok kode berulang kali. Pada kode ini, digunakan loop `for` untuk meminta input dan menampilkan data.
+11. **Perulangan** adalah statement kontrol yang digunakan untuk menjalankan blok kode berulang kali. Pada kode ini, digunakan loop `do while` untuk meminta input dan menampilkan data.
 
 ```bash
-for (int i = 0; i < mahasiswas.length; i++) {
-    ...
-}
+do{
+    System.out.print("Lanjutkan (y/t) : ");
+    String jawaban = scanner.nextLine();
+        if (!jawaban.equalsIgnoreCase("y")){
+        lanjutkan = false;
+        }
+} while (lanjutkan);
 ```
 
 12. **Input Output Sederhana** digunakan untuk menerima input dari user dan menampilkan output ke user. Pada kode ini, digunakan class `Scanner` untuk menerima input dan method `System.out.println` untuk menampilkan output.
 
 ```bash
 Scanner scanner = new Scanner(System.in);
-System.out.print("Masukkan Nama Mahasiswa ke-" + (i + 1) + ": ");
-String nama = scanner.nextLine();
+    System.out.print("Masukan Nama : ");
+    String nama = scanner.nextLine();
+    System.out.print("Masukan Nilai : ");
+    double nilai = scanner.nextDouble();
+    scanner.nextLine();
 
-System.out.println("\nData Mahasiswa:");
-System.out.println(mahasiswa.displayInfo());
+System.out.println(Aditya[0].displayInfo());
+System.out.println("Nilai Huruf : "+ Aditya[0].getNilaiHuruf());
+System.out.println("Kelulusan : "+ Aditya[0].getKelulusan());
 ```
 
-13. **Array** adalah struktur data yang digunakan untuk menyimpan beberapa nilai dalam satu variabel. Pada kode ini, `MahasiswaDetail[] mahasiswas = new MahasiswaDetail[2];` adalah contoh penggunaan array.
+13. **Array** adalah struktur data yang digunakan untuk menyimpan beberapa nilai dalam satu variabel. Pada kode ini, `NilaiDetail[] Aditya = new NilaiDetail[2];` adalah contoh penggunaan array.
 
 ```bash
-MahasiswaDetail[] mahasiswas = new MahasiswaDetail[2];
+NilaiDetail[] Aditya = new NilaiDetail[2];
 ```
 
 14. **Error Handling** digunakan untuk menangani error yang mungkin terjadi saat runtime. Pada kode ini, digunakan `try catch` untuk menangani error.
@@ -161,8 +168,9 @@ MahasiswaDetail[] mahasiswas = new MahasiswaDetail[2];
 ```bash
 try {
     // code that might throw an exception
-} catch (Exception e) {
-    System.out.println("Error: " + e.getMessage());
+} catch (InputMismatchException e) {
+    System.out.println("Kesalahan Input Pada Nilai");
+    scanner.nextLine();
 }
 ```
 
@@ -188,5 +196,5 @@ try {
 
 ## Pembuat
 
-Nama: Muhammad Edya Rosadi
-NPM: 2110010001
+Nama: Aditya Rafael Ramadhan
+NPM: 2310010530
